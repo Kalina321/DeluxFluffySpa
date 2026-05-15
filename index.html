@@ -232,7 +232,7 @@
       pointer-events: none;
       z-index: 0;
     }
-    .blob-1 { width: 440px; height: 440px; background: var(--primary-mid); top: -120px; right: -100px; }
+    .blob-1 { width: 440px; height: 440px; background: var(--primary); top: -120px; right: -100px; }
     .blob-2 { width: 300px; height: 300px; background: var(--lavender);    bottom: -60px; left: -60px; }
     .blob-3 { width: 200px; height: 200px; background: var(--soft-gold);   top: 38%; right: 18%; }
 
@@ -685,18 +685,26 @@
       .nav-links, .nav-cta-desktop { display: none; }
       .hamburger { display: flex; }
 
-      .hero { min-height: auto; padding: 4rem 1.25rem 3.5rem; }
-      .hero-dog { width: 45%; }
+      .hero { min-height: 100vh; padding: 3rem 1.25rem 2rem; }
+      .hero-dog {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 42%;
+      }
+      .hero-dog img {
+        object-position: center 20%;
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 35%);
+        mask-image:         linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 35%);
+      }
 
       .contact-grid { grid-template-columns: 1fr; }
 
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .g-item.wide { grid-column: span 2; aspect-ratio: 2 / 1; }
       .g-item.tall { grid-row: span 1; aspect-ratio: 1; }
-    }
-
-    @media (max-width: 600px) {
-      /* .hero-dog { display: none; } */
     }
 
     @media (max-width: 520px) {
