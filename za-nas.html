@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>За нас — DeluxFluffySpa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:      #ffe5dc;
+      --primary-dark: #ff6f61;
+      --primary-light:#EDE9FE;
+      --primary-mid:  #98584f;
+      --lavender:     #ffe5dc;
+      --soft-gold:    #FDE68A;
+      --bg:           #FAF8FF;
+      --white:        #FFFFFF;
+      --text:         #1A1A2E;
+      --text-mid:     #555;
+      --text-light:   #888;
+      --radius:       14px;
+      --radius-lg:    24px;
+      --shadow:       0 6px 24px rgba(119,64,203,.14);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { font-weight: 800; line-height: 1.2; }
+    a { color: inherit; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+    section { padding: 5rem 1.25rem; }
+
+    .section-label {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform .22s, box-shadow .22s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(255,111,97,.32);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(255,111,97,.45); }
+
+    /* ════════════════ TOP BAR ════════════════ */
+    .top-bar {
+      background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+      color: #fff;
+      text-align: center;
+      padding: .55rem 1.25rem;
+      font-size: .88rem;
+      font-weight: 700;
+      letter-spacing: .4px;
+    }
+    .top-bar a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ════════════════ NAVBAR ════════════════ */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,248,255,.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(153,107,221,.12);
+      padding: .9rem 1.25rem;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-logo {
+      font-size: 1.3rem;
+      font-weight: 900;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      white-space: nowrap;
+    }
+    .nav-logo em { font-style: normal; color: var(--primary-dark); }
+    .nav-links { display: flex; list-style: none; gap: 1.8rem; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-mid);
+      font-weight: 700;
+      font-size: .92rem;
+      transition: color .2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--primary-dark); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2.5px;
+      background: var(--primary-dark);
+      border-radius: 2px;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1.6rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--text);
+      transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--primary-dark); }
+    .mob-close {
+      position: absolute;
+      top: 1.4rem; right: 1.4rem;
+      background: none; border: none;
+      font-size: 2rem; color: var(--text-mid);
+      cursor: pointer; line-height: 1;
+    }
+
+    /* ════════════════ PAGE HERO ════════════════ */
+    .page-hero {
+      background: linear-gradient(140deg, #FAF8FF 0%, #EDE9FE 50%, #F5F0FF 100%);
+      padding: 5rem 1.25rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(72px);
+      opacity: .3;
+      pointer-events: none;
+    }
+    .page-hero .b1 { width: 380px; height: 380px; background: var(--primary); top: -100px; right: -80px; }
+    .page-hero .b2 { width: 260px; height: 260px; background: var(--lavender); bottom: -60px; left: -60px; }
+    .page-hero-content { position: relative; z-index: 1; }
+    .page-hero h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); margin-bottom: 1rem; }
+    .page-hero h1 em { font-style: normal; color: var(--primary-dark); }
+    .page-hero p {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ════════════════ STORY ════════════════ */
+    .story { background: var(--white); }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .story-img {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+    }
+    .story-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: var(--radius-lg);
+    }
+    .story-text h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 1.2rem; }
+    .story-text h2 em { font-style: normal; color: var(--primary-dark); }
+    .story-text p { color: var(--text-mid); margin-bottom: 1rem; line-height: 1.8; }
+
+    /* ════════════════ VALUES ════════════════ */
+    .values { background: var(--bg); }
+    .values-title { font-size: clamp(1.8rem, 4vw, 2.4rem); text-align: center; margin-bottom: .6rem; }
+    .values-sub { text-align: center; color: var(--text-mid); margin-bottom: 3rem; font-size: 1.05rem; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    .value-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--primary-light);
+    }
+    .value-icon { font-size: 2.4rem; margin-bottom: 1rem; display: block; }
+    .value-card h3 { font-size: 1.05rem; margin-bottom: .5rem; }
+    .value-card p { font-size: .88rem; color: var(--text-mid); }
+
+    /* ════════════════ TEAM ════════════════ */
+    .team { background: var(--white); }
+    .team-title { font-size: clamp(1.8rem, 4vw, 2.4rem); text-align: center; margin-bottom: .6rem; }
+    .team-sub { text-align: center; color: var(--text-mid); margin-bottom: 3rem; font-size: 1.05rem; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .team-card { text-align: center; }
+    .team-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      overflow: hidden;
+    }
+    .team-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .team-card h3 { font-size: 1.05rem; margin-bottom: .25rem; }
+    .team-card p { font-size: .85rem; color: var(--primary-dark); font-weight: 700; }
+
+    /* ════════════════ CTA ════════════════ */
+    .cta-band {
+      background: linear-gradient(135deg, var(--primary-dark), #c0392b);
+      padding: 4rem 1.25rem;
+      text-align: center;
+      color: #fff;
+    }
+    .cta-band h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: .75rem; }
+    .cta-band p { font-size: 1.05rem; margin-bottom: 2rem; opacity: .9; }
+    .btn-white {
+      background: #fff;
+      color: var(--primary-dark);
+      box-shadow: 0 4px 18px rgba(0,0,0,.2);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(0,0,0,.3); }
+
+    /* ════════════════ FOOTER ════════════════ */
+    footer {
+      background: #14102A;
+      color: #aaa;
+      padding: 2.8rem 1.25rem 2rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 1.1rem;
+      text-decoration: none;
+    }
+    .footer-logo em { font-style: normal; color: var(--lavender); }
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .footer-nav a {
+      text-decoration: none;
+      color: #888;
+      font-weight: 700;
+      font-size: .87rem;
+      transition: color .2s;
+    }
+    .footer-nav a:hover { color: var(--primary); }
+    .footer-copy { font-size: .78rem; color: #444; }
+
+    /* ════════════════ RESPONSIVE ════════════════ */
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta-desktop { display: none; }
+      .hamburger { display: flex; }
+      .story-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .story-img { max-width: 420px; margin: 0 auto; }
+    }
+    @media (max-width: 520px) {
+      section { padding: 3.5rem 1rem; }
+      .values-grid, .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ TOP BAR ══════════ -->
+  <div class="top-bar">
+    ✨ Запази час — <a href="index.html#contact">Натисни тук</a>
+  </div>
+
+  <!-- ══════════ NAVBAR ══════════ -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">🐾 Deluxe<em>Fluffy</em>Spa</a>
+      <ul class="nav-links">
+        <li><a href="index.html#services">Услуги</a></li>
+        <li><a href="index.html#gallery">Галерия</a></li>
+        <li><a href="index.html#contact">Контакти</a></li>
+        <li><a href="za-nas.html" class="active">За нас</a></li>
+      </ul>
+      <div class="nav-cta-desktop">
+        <a href="tel:+359896145511" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.18 21 3 13.82 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02L6.6 10.8z"/>
+          </svg>
+          Обади се
+        </a>
+      </div>
+      <button class="hamburger" onclick="openMenu()" aria-label="Отвори меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════ MOBILE MENU ══════════ -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mob-close" onclick="closeMenu()">✕</button>
+    <a href="index.html#services" onclick="closeMenu()">Услуги</a>
+    <a href="index.html#gallery"  onclick="closeMenu()">Галерия</a>
+    <a href="index.html#contact"  onclick="closeMenu()">Контакти</a>
+    <a href="za-nas.html"         onclick="closeMenu()">За нас</a>
+    <a href="tel:+359896145511" class="btn btn-primary" onclick="closeMenu()">Обади се</a>
+  </div>
+
+  <!-- ══════════ PAGE HERO ══════════ -->
+  <div class="page-hero">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="page-hero-content">
+      <span class="section-label">Нашата история</span>
+      <h1>Запознайте се с<br><em>DeluxFluffySpa</em></h1>
+      <p>Малък салон с голямо сърце. Обичаме кучетата и се грижим за тях като за свои.</p>
+    </div>
+  </div>
+
+  <!-- ══════════ STORY ══════════ -->
+  <section class="story">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-img">
+          <!-- Заменете с ваша снимка: <img src="снимка.jpg" alt="Салонът ни"> -->
+          🐾
+        </div>
+        <div class="story-text">
+          <span class="section-label">Кои сме ние</span>
+          <h2>Страст към <em>животните</em>, грижа за всеки детайл</h2>
+          <p>DeluxFluffySpa е основан с една проста идея — всяко куче заслужава да се чувства обичано и добре изглеждащо. Вярваме, че грийминга не е просто козметична процедура, а форма на грижа.</p>
+          <p>Работим с premium продукти, безопасни за всички породи и темпераменти. Всяка сесия се провежда спокойно и без стрес — за кучето и за вас.</p>
+          <p>Намираме се на <strong>ул. Радецки 74</strong> и приемаме от понеделник до събота.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ VALUES ══════════ -->
+  <section class="values">
+    <div class="container">
+      <span class="section-label" style="display:block;text-align:center">Нашите ценности</span>
+      <h2 class="values-title">Защо клиентите ни се връщат</h2>
+      <p class="values-sub">Не просто грийминг — изживяване, на което може да се доверите.</p>
+      <div class="values-grid">
+        <div class="value-card">
+          <span class="value-icon">❤️</span>
+          <h3>Любов към животните</h3>
+          <p>Всяко куче е прието с топлина и уважение, независимо от порода или характер.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">🌿</span>
+          <h3>Безопасни продукти</h3>
+          <p>Използваме само хипоалергенни, дерматологично тествани шампоани и балсами.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">✂️</span>
+          <h3>Професионализъм</h3>
+          <p>Обучени гроумъри с опит в различни породи и техники на подстригване.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">😌</span>
+          <h3>Без стрес</h3>
+          <p>Работим спокойно и търпеливо — дори с плахи или тревожни кучета.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ TEAM ══════════ -->
+  <section class="team">
+    <div class="container">
+      <span class="section-label" style="display:block;text-align:center">Нашият екип</span>
+      <h2 class="team-title">Хората зад грийминга</h2>
+      <p class="team-sub">Запознайте се с хората, които ще се грижат за вашия любимец.</p>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-photo">
+            <!-- <img src="team1.jpg" alt="Мария"> -->
+            🐶
+          </div>
+          <h3>Мария Иванова</h3>
+          <p>Главен гроумър</p>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">
+            <!-- <img src="team2.jpg" alt="Петя"> -->
+            🐩
+          </div>
+          <h3>Петя Георгиева</h3>
+          <p>Гроумър & Асистент</p>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">
+            <!-- <img src="team3.jpg" alt="Ивайло"> -->
+            🦮
+          </div>
+          <h3>Ивайло Димитров</h3>
+          <p>Рецепция & Грижи</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CTA BAND ══════════ -->
+  <div class="cta-band">
+    <h2>Готови да запазите час?</h2>
+    <p>Вашето куче заслужава най-доброто. Свържете се с нас днес.</p>
+    <a href="index.html#contact" class="btn btn-white">Запази час</a>
+  </div>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer>
+    <a href="index.html" class="footer-logo">🐾 Delux<em>Fluffy</em>Spa</a>
+    <nav class="footer-nav">
+      <a href="index.html#services">Услуги</a>
+      <a href="index.html#gallery">Галерия</a>
+      <a href="index.html#contact">Контакти</a>
+      <a href="za-nas.html">За нас</a>
+      <a href="tel:+35988888888">Обади се</a>
+    </nav>
+    <p class="footer-copy">© 2024 DeluxFluffySpa. Направено с ❤️ за кучета навсякъде.</p>
+  </footer>
+
+  <script>
+    function openMenu() {
+      document.getElementById('mobileMenu').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  </script>
+</body>
+</html>
