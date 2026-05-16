@@ -409,6 +409,28 @@
       flex-shrink: 0;
     }
 
+    .svc-sub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding-left: 1rem;
+      border-left: 2px solid var(--primary);
+      margin-left: 1.2rem;
+    }
+    .svc-sub-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      padding: 0.25rem 0.5rem;
+    }
+    .svc-sub-price {
+      font-weight: 800;
+      color: var(--primary-dark);
+      font-size: 0.85rem;
+    }
+
     .svc-premium-card {
       background: linear-gradient(135deg, var(--primary-light), var(--primary));
       border-radius: var(--radius);
@@ -855,7 +877,21 @@
             <div class="svc-balloon">
               <span class="svc-balloon-icon">✂️</span>
               <span class="svc-balloon-name">Пълен груминг</span>
-              <span class="svc-balloon-price">От 55 лв.</span>
+              <span class="svc-balloon-price">От 25 лв.</span>
+            </div>
+            <div class="svc-sub-list">
+              <div class="svc-sub-item">
+                <span>Малки породи</span>
+                <span class="svc-sub-price">25 лв.</span>
+              </div>
+              <div class="svc-sub-item">
+                <span>Средни породи</span>
+                <span class="svc-sub-price">35 лв.</span>
+              </div>
+              <div class="svc-sub-item">
+                <span>Големи породи</span>
+                <span class="svc-sub-price">50 лв.</span>
+              </div>
             </div>
             <div class="svc-balloon">
               <span class="svc-balloon-icon">🪮</span>
