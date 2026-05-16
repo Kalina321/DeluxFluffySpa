@@ -360,7 +360,7 @@
 
     .svc-groups {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
       align-items: start;
     }
@@ -407,6 +407,22 @@
       font-size: 0.82rem;
       white-space: nowrap;
       flex-shrink: 0;
+    }
+
+    .svc-premium-card {
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      border-radius: var(--radius);
+      padding: 1.5rem 1.5rem;
+      border: 2px solid var(--primary-dark);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .svc-premium-desc {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.5;
     }
 
     /* ════════════════════════════════
@@ -849,6 +865,28 @@
           </div>
         </div>
 
+        <!-- Spa терапии -->
+        <div class="svc-group">
+          <h3 class="svc-group-title">Spa терапии</h3>
+          <div class="svc-list">
+            <div class="svc-balloon">
+              <span class="svc-balloon-icon">💧</span>
+              <span class="svc-balloon-name">Хидратираща терапия</span>
+              <span class="svc-balloon-price">От 20 лв.</span>
+            </div>
+            <div class="svc-balloon">
+              <span class="svc-balloon-icon">🌸</span>
+              <span class="svc-balloon-name">Арома SPA терапия</span>
+              <span class="svc-balloon-price">От 20 лв.</span>
+            </div>
+            <div class="svc-balloon">
+              <span class="svc-balloon-icon">✨</span>
+              <span class="svc-balloon-name">Възстановяваща терапия</span>
+              <span class="svc-balloon-price">От 20 лв.</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Допълнителни грижи -->
         <div class="svc-group">
           <h3 class="svc-group-title">Допълнителни грижи</h3>
@@ -874,7 +912,9 @@
         <!-- Премиум пакет -->
         <div class="svc-group">
           <h3 class="svc-group-title">Премиум пакет</h3>
-          <div class="svc-list">
+          <div class="svc-premium-card">
+            <p class="svc-premium-desc">Пълен груминг + SPA терапия + допълнителна грижа</p>
+            <span class="svc-balloon-price">От 20 лв.</span>
           </div>
         </div>
 
