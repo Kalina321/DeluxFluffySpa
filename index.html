@@ -359,89 +359,87 @@
     .services { background: var(--bg); }
 
     .svc-groups {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      align-items: start;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      max-width: 680px;
+      margin: 0 auto;
     }
 
     .svc-group-title {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 800;
       color: var(--primary-dark);
-      margin-bottom: 1rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 2px solid var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.9rem;
     }
 
     .svc-list {
       display: flex;
       flex-direction: column;
-      gap: 0.55rem;
+      gap: 0.45rem;
     }
 
     .svc-balloon {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
       background: var(--white);
       border-radius: 50px;
-      padding: 0.75rem 1.25rem;
+      padding: 0.7rem 1.25rem;
       border: 1.5px solid var(--primary-light);
-      box-shadow: 0 2px 10px rgba(0,0,0,.05);
-      transition: transform .2s, box-shadow .2s, border-color .2s;
+      transition: border-color .2s, box-shadow .2s;
     }
     .svc-balloon:hover {
-      transform: translateX(5px);
-      box-shadow: 0 4px 18px rgba(255,111,97,.15);
       border-color: var(--primary-dark);
+      box-shadow: 0 3px 14px rgba(255,111,97,.12);
     }
-    .svc-balloon-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .svc-balloon-icon { display: none; }
     .svc-balloon-name { flex: 1; font-weight: 700; font-size: 0.93rem; }
     .svc-balloon-price {
       background: var(--primary-light);
       color: var(--primary-dark);
-      padding: 0.22rem 0.8rem;
+      padding: 0.2rem 0.8rem;
       border-radius: 50px;
       font-weight: 800;
       font-size: 0.82rem;
       white-space: nowrap;
-      flex-shrink: 0;
     }
 
     .svc-sub-list {
       display: flex;
       flex-direction: column;
-      gap: 0.3rem;
-      padding-left: 1rem;
+      gap: 0;
+      padding-left: 1.25rem;
       border-left: 2px solid var(--primary);
-      margin-left: 1.2rem;
+      margin-left: 1rem;
+      margin-top: 0.1rem;
     }
     .svc-sub-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       color: var(--text-mid);
-      padding: 0.25rem 0.5rem;
+      padding: 0.28rem 0.5rem;
     }
     .svc-sub-price {
       font-weight: 800;
       color: var(--primary-dark);
-      font-size: 0.85rem;
+      font-size: 0.84rem;
     }
 
     .svc-premium-card {
-      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      background: var(--primary-light);
       border-radius: var(--radius);
-      padding: 1.5rem 1.5rem;
-      border: 2px solid var(--primary-dark);
+      padding: 1.25rem 1.5rem;
+      border: 1.5px solid var(--primary-dark);
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.9rem;
     }
     .svc-premium-desc {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--text);
       line-height: 1.5;
@@ -755,7 +753,7 @@
 
     @media (max-width: 520px) {
       section { padding: 3.5rem 1rem; }
-      .svc-groups { grid-template-columns: 1fr; }
+      .svc-groups { max-width: 100%; }
       .form-row { grid-template-columns: 1fr; }
       .gallery-grid { gap: .5rem; }
       .contact-form-wrap { padding: 1.5rem 1.25rem; }
@@ -875,8 +873,7 @@
           <h3 class="svc-group-title">Основни услуги</h3>
           <div class="svc-list">
             <div class="svc-balloon">
-              <span class="svc-balloon-icon">✂️</span>
-              <span class="svc-balloon-name">Пълен груминг</span>
+<span class="svc-balloon-name">Пълен груминг</span>
               <span class="svc-balloon-price">От 25 лв.</span>
             </div>
             <div class="svc-sub-list">
@@ -894,8 +891,7 @@
               </div>
             </div>
             <div class="svc-balloon">
-              <span class="svc-balloon-icon">🪮</span>
-              <span class="svc-balloon-name">Подстригване и оформяне</span>
+<span class="svc-balloon-name">Подстригване и оформяне</span>
               <span class="svc-balloon-price">От 25 лв.</span>
             </div>
             <div class="svc-sub-list">
@@ -920,18 +916,15 @@
           <h3 class="svc-group-title">Spa терапии</h3>
           <div class="svc-list">
             <div class="svc-balloon">
-              <span class="svc-balloon-icon">💧</span>
-              <span class="svc-balloon-name">Хидратираща терапия</span>
+<span class="svc-balloon-name">Хидратираща терапия</span>
               <span class="svc-balloon-price">От 20 лв.</span>
             </div>
             <div class="svc-balloon">
-              <span class="svc-balloon-icon">🌸</span>
-              <span class="svc-balloon-name">Арома SPA терапия</span>
+<span class="svc-balloon-name">Арома SPA терапия</span>
               <span class="svc-balloon-price">От 20 лв.</span>
             </div>
             <div class="svc-balloon">
-              <span class="svc-balloon-icon">✨</span>
-              <span class="svc-balloon-name">Възстановяваща терапия</span>
+<span class="svc-balloon-name">Възстановяваща терапия</span>
               <span class="svc-balloon-price">От 20 лв.</span>
             </div>
           </div>
@@ -942,18 +935,15 @@
           <h3 class="svc-group-title">Допълнителни грижи</h3>
           <div class="svc-list">
             <div class="svc-balloon">
-              <span class="svc-balloon-icon">🪮</span>
-              <span class="svc-balloon-name">Разресване и премахване на сплъстявания</span>
+<span class="svc-balloon-name">Разресване и премахване на сплъстявания</span>
               <span class="svc-balloon-price">От 20 лв.</span>
             </div>
             <div class="svc-balloon">
-              <span class="svc-balloon-icon">👂</span>
-              <span class="svc-balloon-name">Почистване на уши</span>
+<span class="svc-balloon-name">Почистване на уши</span>
               <span class="svc-balloon-price">От 20 лв.</span>
             </div>
             <div class="svc-balloon">
-              <span class="svc-balloon-icon">💅</span>
-              <span class="svc-balloon-name">Изрязване на нокти</span>
+<span class="svc-balloon-name">Изрязване на нокти</span>
               <span class="svc-balloon-price">От 20 лв.</span>
             </div>
           </div>
