@@ -453,6 +453,40 @@
     }
 
     /* ════════════════════════════════
+       ZA NAS
+    ════════════════════════════════ */
+    .za-nas { background: var(--white); }
+    .za-nas-intro {
+      max-width: 720px;
+      margin: 0 auto 3.5rem;
+      text-align: center;
+      color: var(--text-mid);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .team-card { text-align: center; }
+    .team-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      overflow: hidden;
+    }
+    .team-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .team-card h3 { font-size: 1rem; margin-bottom: .25rem; }
+    .team-card p { font-size: .85rem; color: var(--primary-dark); font-weight: 700; }
+
+    /* ════════════════════════════════
        GALLERY
     ════════════════════════════════ */
     .gallery { background: var(--white); }
@@ -777,7 +811,7 @@
         <li><a href="#services">Услуги</a></li>
         <li><a href="#gallery">Галерия</a></li>
         <li><a href="#contact">Контакти</a></li>
-        <li><a href="za-nas.html">За нас</a></li>
+        <li><a href="#za-nas">За нас</a></li>
       </ul>
       <div class="nav-cta-desktop">
         <a href="https://www.notino.bg/saloni/deluxe-fluffy-spa_2/?utm_source=salon_mkt&utm_medium=qr&utm_campaign=booking_promo&utm_content=173cda74-4627-4a3c-b534-c537500a6247" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
@@ -799,7 +833,7 @@
     <a href="#services"   onclick="closeMenu()">Услуги</a>
     <a href="#gallery"    onclick="closeMenu()">Галерия</a>
     <a href="#contact"    onclick="closeMenu()">Контакти</a>
-    <a href="za-nas.html" onclick="closeMenu()">За нас</a>
+    <a href="#za-nas" onclick="closeMenu()">За нас</a>
     <a href="#contact"  onclick="closeMenu()">Контакти</a>
     <a href="https://www.notino.bg/saloni/deluxe-fluffy-spa_2/?utm_source=salon_mkt&utm_medium=qr&utm_campaign=booking_promo&utm_content=173cda74-4627-4a3c-b534-c537500a6247" target="_blank" rel="noopener noreferrer" class="btn btn-primary" onclick="closeMenu()">Запази онлайн</a>
   </div>
@@ -1026,6 +1060,35 @@
     </div>
   </section>
 
+  <!-- ══════════ ZA NAS ══════════ -->
+  <section class="za-nas" id="za-nas">
+    <div class="container">
+      <div style="text-align:center">
+        <span class="section-label">За нас</span>
+      </div>
+      <h2 class="section-title">Запознайте се с DeluxFluffySpa</h2>
+      <p class="za-nas-intro">Малък салон с голямо сърце. За нас грумингът не е просто подстригване, а внимание, комфорт и отношение към всеки любимец като към част от семейството. Нашият екип от професионалисти работи с търпение, нежност и индивидуален подход към всеки пухкав приятел. Използваме висококачествена козметика и професионално оборудване. Държим на хигиената, безопасността и спокойната атмосфера.</p>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-photo">🐶</div>
+          <h3>Павлета Найденова</h3>
+          <p>Главен груумър</p>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">🐩</div>
+          <h3>Мария</h3>
+          <p>Груумър &amp; Асистент</p>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">🦮</div>
+          <h3>Ивайло Димитров</h3>
+          <p>Рецепция &amp; Грижи</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════ CONTACT ══════════ -->
   <section class="contact" id="contact">
     <div class="container">
@@ -1149,7 +1212,7 @@
       <a href="#services">Услуги</a>
       <a href="#gallery">Галерия</a>
       <a href="#contact">Контакти</a>
-      <a href="za-nas.html">За нас</a>
+      <a href="#za-nas">За нас</a>
       <a href="https://www.notino.bg/saloni/deluxe-fluffy-spa_2/?utm_source=salon_mkt&utm_medium=qr&utm_campaign=booking_promo&utm_content=173cda74-4627-4a3c-b534-c537500a6247" target="_blank" rel="noopener noreferrer">Запази онлайн</a>
     </nav>
     <p class="footer-copy">© 2024 DeluxFluffySpa. Направено с ❤️ за всички кучета.</p>
