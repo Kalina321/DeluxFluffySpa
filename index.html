@@ -679,6 +679,31 @@
     }
     .fab svg { width: 26px; height: 26px; fill: #fff; }
 
+    .fab-book {
+      position: fixed;
+      bottom: 5.5rem;
+      right: 1.6rem;
+      z-index: 90;
+      display: none;
+      align-items: center;
+      gap: .5rem;
+      background: var(--primary-dark);
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: .85rem;
+      padding: .65rem 1.1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(119,64,203,.48);
+      white-space: nowrap;
+    }
+    .fab-book svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+
+    @media (max-width: 860px) {
+      .fab-book { display: flex; }
+    }
+
     @keyframes fab-pulse {
       0%,100% { box-shadow: 0 4px 20px rgba(119,64,203,.48); }
       50%      { box-shadow: 0 4px 20px rgba(119,64,203,.48), 0 0 0 9px rgba(119,64,203,.1); }
@@ -793,7 +818,6 @@
     <a href="#gallery"    onclick="closeMenu()">Галерия</a>
     <a href="#contact"    onclick="closeMenu()">Контакти</a>
     <a href="#za-nas" onclick="closeMenu()">За нас</a>
-    <a href="#contact"  onclick="closeMenu()">Контакти</a>
     <a href="https://www.notino.bg/saloni/deluxe-fluffy-spa_2/?utm_source=salon_mkt&utm_medium=qr&utm_campaign=booking_promo&utm_content=173cda74-4627-4a3c-b534-c537500a6247" target="_blank" rel="noopener noreferrer" class="btn btn-primary" onclick="closeMenu()">Запази онлайн</a>
   </div>
 
@@ -1132,6 +1156,12 @@
     </nav>
     <p class="footer-copy">© 2024 DeluxeFluffySpa. Направено с ❤️ за всички кучета.</p>
   </footer>
+
+  <!-- ══════════ FLOATING BOOK BUTTON (mobile only) ══════════ -->
+  <a href="https://www.notino.bg/saloni/deluxe-fluffy-spa_2/?utm_source=salon_mkt&utm_medium=qr&utm_campaign=booking_promo&utm_content=173cda74-4627-4a3c-b534-c537500a6247" target="_blank" rel="noopener noreferrer" class="fab-book" aria-label="Запази онлайн">
+    <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zM7 12h5v5H7z"/></svg>
+    Запази онлайн
+  </a>
 
   <!-- ══════════ FLOATING CALL BUTTON ══════════ -->
   <a href="tel:+359896145511" class="fab" aria-label="Обади се">
