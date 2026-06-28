@@ -613,54 +613,20 @@
     .call-block { margin-top: 2rem; }
     .call-block .btn { width: 100%; justify-content: center; font-size: 1.05rem; }
 
-    .contact-form-wrap {
+    .contact-map-wrap {
       background: var(--white);
       border-radius: var(--radius-lg);
-      padding: 2.2rem 2rem;
+      overflow: hidden;
       box-shadow: var(--shadow);
+      min-height: 420px;
     }
-    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: .38rem; }
-    .form-group label { font-weight: 700; font-size: .87rem; }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      padding: .78rem 1rem;
-      border: 2px solid #E5E7EB;
-      border-radius: var(--radius);
-      font-family: 'Nunito', sans-serif;
-      font-size: .93rem;
-      color: var(--text);
-      background: var(--bg);
-      outline: none;
-      transition: border-color .2s;
-      appearance: none;
+    .contact-map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: none;
+      display: block;
     }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--primary); }
-    .form-group textarea { resize: vertical; min-height: 110px; }
-    .form-submit { width: 100%; justify-content: center; font-size: 1.05rem; margin-top: .5rem; }
-
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 2.5rem 1rem;
-    }
-    .form-success .success-icon {
-      width: 64px; height: 64px;
-      background: var(--primary-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-    }
-    .form-success .success-icon svg { width: 28px; height: 28px; fill: var(--primary-dark); }
-    .form-success h3 { font-size: 1.45rem; margin-bottom: .5rem; }
-    .form-success p { color: var(--text-mid); }
-    .form-success.show { display: block; }
 
     /* ════════════════════════════════
        FOOTER
@@ -1148,51 +1114,15 @@
           </div>
         </div>
 
-        <!-- Right: form -->
-        <div class="contact-form-wrap">
-          <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fname">Вашето име</label>
-                <input type="text" id="fname" placeholder="Мария Иванова" required>
-              </div>
-              <div class="form-group">
-                <label for="fphone">Телефон</label>
-                <input type="tel" id="fphone" placeholder="088 000 0000">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="femail">Имейл адрес</label>
-              <input type="email" id="femail" placeholder="maria@email.com" required>
-            </div>
-            <div class="form-group">
-              <label for="fservice">Желана услуга</label>
-              <select id="fservice">
-                <option value="">Изберете услуга...</option>
-                <option>Баня и сешоар (35+ лв.)</option>
-                <option>Пълен Груминг (55+ лв.)</option>
-                <option>Рязане на нокти (15 лв.)</option>
-                <option>Почистване на уши (12 лв.)</option>
-                <option>Третиране срещу косопад (45+ лв.)</option>
-                <option>Първи Груминг за кученце (40+ лв.)</option>
-                <option>Миене на зъби (10 лв.)</option>
-                <option>Пълен СПА пакет (85+ лв.)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="fmsg">Разкажете ни за кучето си</label>
-              <textarea id="fmsg" placeholder="Порода, възраст, специални нужди..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary form-submit">Изпрати съобщение</button>
-          </form>
-
-          <div class="form-success" id="formSuccess">
-            <div class="success-icon">
-              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            </div>
-            <h3>Получихме вашето съобщение!</h3>
-            <p>Ще се свържем с вас до края на деня. Очакваме ви скоро!</p>
-          </div>
+        <!-- Right: map -->
+        <div class="contact-map-wrap">
+          <iframe
+            src="https://maps.google.com/maps?q=ул.+Радецки+74,+Варна,+България&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Местоположение на DeluxeFluffySpa"
+          ></iframe>
         </div>
       </div>
     </div>
@@ -1249,16 +1179,6 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') { closeLb(); closeMenu(); }
     });
-
-    function handleSubmit(e) {
-      e.preventDefault();
-      const name  = document.getElementById('fname').value.trim();
-      const email = document.getElementById('femail').value.trim();
-      if (!name || !email) return;
-      document.getElementById('contactForm').style.display = 'none';
-      document.getElementById('formSuccess').classList.add('show');
-      /* TODO: свържете с реален имейл handler (напр. EmailJS, Formspree) */
-    }
 
     const sections = document.querySelectorAll('section[id]');
     const links    = document.querySelectorAll('.nav-links a');
