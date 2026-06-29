@@ -697,7 +697,11 @@
     .fab-book svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
 
     @media (max-width: 860px) {
-      .fab-book { display: flex; }
+      .fab-book {
+        display: flex;
+        bottom: 1.6rem;
+        right: calc(1.6rem + 60px + 0.8rem);
+      }
     }
 
     @keyframes fab-pulse {
@@ -751,6 +755,10 @@
       .hero { min-height: 100vh; padding: 2rem 1.25rem 2rem; align-items: flex-start; }
       .hero-dog {
         opacity: 0.2;
+      }
+      .hero-dog img {
+        object-fit: contain;
+        object-position: center center;
       }
 
       .hero .container { margin-left: 0; }
