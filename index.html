@@ -88,7 +88,7 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: var(--primary-dark);
       color: #fff;
       box-shadow: 0 4px 18px rgba(119,64,203,.32);
     }
@@ -220,7 +220,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: linear-gradient(100deg, #FAF8FF 0%, #EDE9FE 50%, #F5F0FF 100%);
+      background: linear-gradient(140deg, #FAF8FF 0%, #EDE9FE 50%, #F5F0FF 100%);
       z-index: 0;
     }
 
@@ -248,12 +248,10 @@
     /* real dog photo in hero — blended */
     .hero-dog {
       position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      width: 55%;
+      inset: 0;
       z-index: 1;
       pointer-events: none;
+      opacity: 0.25;
     }
     .hero-dog img {
       width: 100%;
@@ -261,14 +259,17 @@
       object-fit: cover;
       object-position: center top;
       display: block;
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 35%);
-      mask-image:         linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 35%);
+    }
+
+    .hero .container {
+      margin-left: 6rem;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
       max-width: 580px;
+      text-align: left;
     }
     .hero-badge {
       display: inline-flex;
@@ -287,7 +288,7 @@
       text-transform: uppercase;
     }
     .hero h1 {
-      font-size: clamp(2.4rem, 7vw, 4rem);
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
       margin-bottom: 1.2rem;
       color: var(--text);
     }
@@ -385,23 +386,12 @@
     .svc-balloon {
       display: flex;
       align-items: center;
-      background: var(--white);
-      border-radius: 50px;
-      padding: 0.7rem 1.25rem;
-      border: 1.5px solid var(--primary-light);
-      transition: border-color .2s, box-shadow .2s;
-    }
-    .svc-balloon:hover {
-      border-color: var(--primary-dark);
-      box-shadow: 0 3px 14px rgba(255,111,97,.12);
+      padding: 0.4rem 0;
     }
     .svc-balloon-icon { display: none; }
     .svc-balloon-name { flex: 1; font-weight: 700; font-size: 0.93rem; }
     .svc-balloon-price {
-      background: var(--primary-light);
       color: var(--primary-dark);
-      padding: 0.2rem 0.8rem;
-      border-radius: 50px;
       font-weight: 800;
       font-size: 0.82rem;
       white-space: nowrap;
@@ -438,10 +428,6 @@
     }
 
     .svc-premium-card {
-      background: var(--primary-light);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
-      border: 1.5px solid var(--primary-dark);
       display: flex;
       flex-direction: column;
       gap: 0.9rem;
@@ -613,54 +599,20 @@
     .call-block { margin-top: 2rem; }
     .call-block .btn { width: 100%; justify-content: center; font-size: 1.05rem; }
 
-    .contact-form-wrap {
+    .contact-map-wrap {
       background: var(--white);
       border-radius: var(--radius-lg);
-      padding: 2.2rem 2rem;
+      overflow: hidden;
       box-shadow: var(--shadow);
+      min-height: 420px;
     }
-    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: .38rem; }
-    .form-group label { font-weight: 700; font-size: .87rem; }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      padding: .78rem 1rem;
-      border: 2px solid #E5E7EB;
-      border-radius: var(--radius);
-      font-family: 'Nunito', sans-serif;
-      font-size: .93rem;
-      color: var(--text);
-      background: var(--bg);
-      outline: none;
-      transition: border-color .2s;
-      appearance: none;
+    .contact-map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: none;
+      display: block;
     }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--primary); }
-    .form-group textarea { resize: vertical; min-height: 110px; }
-    .form-submit { width: 100%; justify-content: center; font-size: 1.05rem; margin-top: .5rem; }
-
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 2.5rem 1rem;
-    }
-    .form-success .success-icon {
-      width: 64px; height: 64px;
-      background: var(--primary-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-    }
-    .form-success .success-icon svg { width: 28px; height: 28px; fill: var(--primary-dark); }
-    .form-success h3 { font-size: 1.45rem; margin-bottom: .5rem; }
-    .form-success p { color: var(--text-mid); }
-    .form-success.show { display: block; }
 
     /* ════════════════════════════════
        FOOTER
@@ -695,7 +647,7 @@
       transition: color .2s;
     }
     .footer-nav a:hover { color: var(--primary); }
-    .footer-copy { font-size: .78rem; color: #444; }
+    .footer-copy { font-size: .78rem; color: #777; }
 
     /* ════════════════════════════════
        FLOATING CALL BUTTON
@@ -708,7 +660,7 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: var(--primary-dark);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -722,6 +674,35 @@
       box-shadow: 0 6px 28px rgba(119,64,203,.65);
     }
     .fab svg { width: 26px; height: 26px; fill: #fff; }
+
+    .fab-book {
+      position: fixed;
+      bottom: 5.5rem;
+      right: 1.6rem;
+      z-index: 90;
+      display: none;
+      align-items: center;
+      gap: .5rem;
+      background: var(--primary-dark);
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: .85rem;
+      padding: .65rem 1.1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(119,64,203,.48);
+      white-space: nowrap;
+    }
+    .fab-book svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+
+    @media (max-width: 860px) {
+      .fab-book {
+        display: flex;
+        bottom: 1.6rem;
+        right: calc(1.6rem + 60px + 0.8rem);
+      }
+    }
 
     @keyframes fab-pulse {
       0%,100% { box-shadow: 0 4px 20px rgba(119,64,203,.48); }
@@ -773,19 +754,15 @@
 
       .hero { min-height: 100vh; padding: 2rem 1.25rem 2rem; align-items: flex-start; }
       .hero-dog {
-        top: auto;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 42%;
+        opacity: 0.2;
       }
       .hero-dog img {
-        object-position: center 20%;
-        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 35%);
-        mask-image:         linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 35%);
+        object-fit: contain;
+        object-position: center center;
       }
 
+      .hero .container { margin-left: 0; }
+      .hero-content { text-align: center; }
       .contact-grid { grid-template-columns: 1fr; }
 
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
@@ -835,7 +812,6 @@
     <a href="#gallery"    onclick="closeMenu()">Галерия</a>
     <a href="#contact"    onclick="closeMenu()">Контакти</a>
     <a href="#za-nas" onclick="closeMenu()">За нас</a>
-    <a href="#contact"  onclick="closeMenu()">Контакти</a>
     <a href="https://www.notino.bg/saloni/deluxe-fluffy-spa_2/?utm_source=salon_mkt&utm_medium=qr&utm_campaign=booking_promo&utm_content=173cda74-4627-4a3c-b534-c537500a6247" target="_blank" rel="noopener noreferrer" class="btn btn-primary" onclick="closeMenu()">Запази онлайн</a>
   </div>
 
@@ -1010,8 +986,7 @@
               </div>
               <div class="svc-sub-item">
                 <span>Големи породи</span>
-                <span class="svc-sub-price">70 - 90 евро
-                </span>
+                <span class="svc-sub-price">70 - 90 евро</span>
               </div>
             </div>
           </div>
@@ -1106,7 +1081,7 @@
             </div>
             <div class="crow-text">
               <strong>0896 145 511</strong>
-              <small>Втор–Съб, 10:00 – 18:00</small>
+              <small>Вт–Съб, 10:00 – 18:00</small>
             </div>
           </div>
           <div class="contact-row">
@@ -1150,51 +1125,15 @@
           </div>
         </div>
 
-        <!-- Right: form -->
-        <div class="contact-form-wrap">
-          <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fname">Вашето име</label>
-                <input type="text" id="fname" placeholder="Мария Иванова" required>
-              </div>
-              <div class="form-group">
-                <label for="fphone">Телефон</label>
-                <input type="tel" id="fphone" placeholder="088 000 0000">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="femail">Имейл адрес</label>
-              <input type="email" id="femail" placeholder="maria@email.com" required>
-            </div>
-            <div class="form-group">
-              <label for="fservice">Желана услуга</label>
-              <select id="fservice">
-                <option value="">Изберете услуга...</option>
-                <option>Баня и сешоар (35+ лв.)</option>
-                <option>Пълен Груминг (55+ лв.)</option>
-                <option>Рязане на нокти (15 лв.)</option>
-                <option>Почистване на уши (12 лв.)</option>
-                <option>Третиране срещу косопад (45+ лв.)</option>
-                <option>Първи Груминг за кученце (40+ лв.)</option>
-                <option>Миене на зъби (10 лв.)</option>
-                <option>Пълен СПА пакет (85+ лв.)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="fmsg">Разкажете ни за кучето си</label>
-              <textarea id="fmsg" placeholder="Порода, възраст, специални нужди..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary form-submit">Изпрати съобщение</button>
-          </form>
-
-          <div class="form-success" id="formSuccess">
-            <div class="success-icon">
-              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            </div>
-            <h3>Получихме вашето съобщение!</h3>
-            <p>Ще се свържем с вас до края на деня. Очакваме ви скоро!</p>
-          </div>
+        <!-- Right: map -->
+        <div class="contact-map-wrap">
+          <iframe
+            src="https://maps.google.com/maps?q=ул.+Радецки+74,+Варна,+България&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Местоположение на DeluxeFluffySpa"
+          ></iframe>
         </div>
       </div>
     </div>
@@ -1212,6 +1151,12 @@
     </nav>
     <p class="footer-copy">© 2024 DeluxeFluffySpa. Направено с ❤️ за всички кучета.</p>
   </footer>
+
+  <!-- ══════════ FLOATING BOOK BUTTON (mobile only) ══════════ -->
+  <a href="https://www.notino.bg/saloni/deluxe-fluffy-spa_2/?utm_source=salon_mkt&utm_medium=qr&utm_campaign=booking_promo&utm_content=173cda74-4627-4a3c-b534-c537500a6247" target="_blank" rel="noopener noreferrer" class="fab-book" aria-label="Запази онлайн">
+    <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zM7 12h5v5H7z"/></svg>
+    Запази онлайн
+  </a>
 
   <!-- ══════════ FLOATING CALL BUTTON ══════════ -->
   <a href="tel:+359896145511" class="fab" aria-label="Обади се">
@@ -1251,16 +1196,6 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') { closeLb(); closeMenu(); }
     });
-
-    function handleSubmit(e) {
-      e.preventDefault();
-      const name  = document.getElementById('fname').value.trim();
-      const email = document.getElementById('femail').value.trim();
-      if (!name || !email) return;
-      document.getElementById('contactForm').style.display = 'none';
-      document.getElementById('formSuccess').classList.add('show');
-      /* TODO: свържете с реален имейл handler (напр. EmailJS, Formspree) */
-    }
 
     const sections = document.querySelectorAll('section[id]');
     const links    = document.querySelectorAll('.nav-links a');
