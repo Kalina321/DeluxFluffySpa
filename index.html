@@ -659,6 +659,36 @@
       border: none;
       display: block;
     }
+    .map-facade {
+      width: 100%;
+      min-height: 420px;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      text-align: center;
+      padding: 1.5rem;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,111,97,.18), transparent 55%),
+        radial-gradient(circle at 75% 70%, rgba(255,229,220,.9), transparent 60%),
+        var(--bg);
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+    }
+    .map-facade svg {
+      width: 40px;
+      height: 40px;
+      fill: var(--primary-dark);
+    }
+    .map-facade-text {
+      color: var(--text-mid);
+      font-size: 0.95rem;
+      max-width: 260px;
+    }
+    .map-facade:hover .btn,
+    .map-facade:focus-visible .btn { transform: translateY(-2px); }
 
     /* ════════════════════════════════
        FOOTER
@@ -1172,14 +1202,12 @@
         </div>
 
         <!-- Right: map -->
-        <div class="contact-map-wrap">
-          <iframe
-            src="https://maps.google.com/maps?q=ул.+Радецки+74,+Варна,+България&t=&z=16&ie=UTF8&iwloc=&output=embed"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Местоположение на DeluxeFluffySpa"
-          ></iframe>
+        <div class="contact-map-wrap" id="mapWrap">
+          <button type="button" class="map-facade" id="mapFacade" onclick="loadMap()" aria-label="Покажи картата с местоположението на DeluxeFluffySpa (зарежда Google Maps)">
+            <svg viewBox="0 0 24 24"><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 7.05 11.35 7.35 11.61a1 1 0 0 0 1.3 0C13 21.35 20 15.25 20 10c0-4.42-3.58-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+            <p class="map-facade-text">ул. Радецки 74, Варна<br>Google Maps ще зареди бисквитки след клик</p>
+            <span class="btn btn-primary">Покажи картата</span>
+          </button>
         </div>
       </div>
     </div>
@@ -1237,6 +1265,17 @@
     function closeLb() {
       document.getElementById('lightbox').classList.remove('open');
       document.body.style.overflow = '';
+    }
+
+    function loadMap() {
+      const wrap = document.getElementById('mapWrap');
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://maps.google.com/maps?q=ул.+Радецки+74,+Варна,+България&t=&z=16&ie=UTF8&iwloc=&output=embed';
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.title = 'Местоположение на DeluxeFluffySpa';
+      iframe.allowFullscreen = true;
+      wrap.replaceChildren(iframe);
     }
 
     document.addEventListener('keydown', e => {
